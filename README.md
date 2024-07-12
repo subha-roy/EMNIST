@@ -51,12 +51,11 @@ comprising 128 and 64 neurons respectively, both utilizing ReLU activation. Last
 comprises 47 neurons with softmax activation for classifying into 47 categories, mirroring the number of output
 classes. The model summary provides a comprehensive overview of the architecture, detailing the parameters
 and output shapes at each layer.
-Section 2-Rationale of Design
-2.1 Rationale Design of MLP:
+## Section 2-Rationale of Design
+### 2.1 Rationale Design of MLP:
 Chosen Hyperparameters/Techniques for tuning:
 In the MLP model building function, various hyperparameters and techniques are used for tuning and
 exploration. These include the number of layers, neurons per layer, activation functions, and dropout rates,
-3
 offering flexibility for experimenting with different architectures. Activation functions like ReLU, Tanh, Leaky
 ReLU, and ELU address non-linearity and vanishing gradient issues. Dropout regularization prevents overfitting
 by randomly dropping neurons. L1 and L2 regularization, along with batch normalization, stabilize and accelerate
@@ -154,7 +153,7 @@ normalization mitigated the risk of overfitting, ensuring more stable and consis
 a delicate balance of model capacity and the integration of regularization techniques, the CNN model effectively
 tackled overfitting and underfitting issues, resulting in notable improvements in generalization performance on
 the validation set.
-Section 3- Results
+## Section 3- Results
 i) During the training iterations of both the Multilayer Perceptron (MLP) and Convolutional Neural Network (CNN)
 models, we observed adaptive fluctuations and plateaus in the training loss and accuracy curves over multiple
 epochs. While the CNN model demonstrated smoother convergence in its training loss and accuracy curves,
@@ -192,7 +191,7 @@ insights. Overall, while both MLPs and CNNs exhibit strengths and weaknesses, th
 comprehend spatial relationships and extract features renders them more adept at image classification tasks.
 This inherent superiority elucidates why the CNN model outperformed the MLP in the analysis, showcasing
 enhanced accuracy and superior generalization in image classification endeavours.
-Section 4: Conclusions
+## Section 4: Conclusions
 Embarking on this project has been an illuminating journey, delving deep into the intricate realm of machine
 learning. It has afforded me invaluable insights into two fundamental architectures: the Multilayer Perceptron
 (MLP) and the Convolutional Neural Network (CNN). Through meticulous exploration and experimentation, I've
@@ -215,7 +214,7 @@ particularly MLP and CNN architectures. Exploring a diverse range of hyperparame
 regularization techniques, and optimization algorithms has deepened my insight into how these components
 interact to influence model performance and convergence dynamics. This newfound knowledge fuels my passion
 for relentless exploration and innovation in the dynamic field of machine learning.
-Reference:
+## Reference:
 1. Keras API Docs - https://keras.io/api/
 2. Keras Tuner - https://keras.io/keras_tuner/
 3. Scikit-Learn API - https://scikit-learn.org/stable/modules/classes.html
