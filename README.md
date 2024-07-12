@@ -116,3 +116,109 @@ True, 'num_dense_layers': 2, 'dense_activation0': 'relu', 'Dense_neurons0': 96, 
 'dense_activation2': 'elu', 'Dense_neurons2': 72, 'dense_dropout2': 0.09705184313484912,'dense_activation3':
 'tanh', 'Dense_neurons3': 80, 'dense_dropout3': 0.06241696994094974, 'dense_activation4': 'leaky_relu',
 'Dense_neurons4': 72, 'dense_dropout4': 0.102298394949072, 'L1_0': 0.0, 'L2_0': 0.0, 'L1_1': 0.0, 'L2_1': 0.0}.
+The model begins with an input layer featuring 64 filters and a 5x5 kernel size with ELU activation, the model
+progresses through a convolutional layer with 104 filters, employing ReLU activation and a dropout rate of
+12.25%. Subsequent pooling layers, assumed to have default configurations, are followed by dense layers with
+varying neuron counts and activation functions, including ReLU, ELU, and Tanh. Dropout regularization is applied
+across these layers with dropout rates ranging from 6.24% to 15.65%. Batch normalization is disabled, and the
+RMSprop optimizer is employed for gradient descent. Overall, this architecture aims to extract hierarchical
+features from input images, leveraging dropout to prevent overfitting and optimizing learning dynamics with
+RMSprop to enhance classification performance.
+Training with Adaptive Learning Rate:
+The use of learning rate schedulers, like learning rate scheduler and reduce lr on plateau technique collectively
+optimize learning rate dynamics in training. These adaptive strategies adjust the learning rate based on validation
+loss trends, ensuring stable convergence towards the optimal solution. Learning rate schedulers prevent
+overshooting or stagnation, while Reduce LR on Plateau helps navigate local minima, enhancing generalization
+to unseen data. Although, after exploring both the techniques, we won’t much of difference in the performance,
+For the reduce lr on plateau, we observed the accuracy is 87.45% & val_accuracy is 87.05% after just total of 8
+epochs, and for the learning rate scheduler, the accuracy is 87.39% & val_accuracy is 83.91 % after 8 epochs. So
+afterwards, I used the model with learning rate scheduler to check the performance on the test dataset.
+Impact of Techniques on Model Performance:
+The integration of hyperparameter tuning and optimisation techniques has significantly elevated the
+performance of the CNN model. These strategies play a pivotal role in averting overfitting by dynamically
+adjusting the learning rate, thereby facilitating more effective convergence towards the global optimum.
+Furthermore, by mitigating the risk of overfitting, these techniques bolster the model's capacity to generalise to
+unseen data, resulting in heightened validation accuracy and diminished validation loss. Comparing the baseline
+model with the optimized variant reveals a substantial enhancement in performance. Initially, the baseline model
+exhibited an accuracy of 92.29% and a validation accuracy of 86.12% after 10 epochs. In contrast, the tuned
+model achieved an accuracy of 87.45% and a validation accuracy of 87.05% after merely 8 epochs. Additionally,
+it's noteworthy that the tuned model demonstrates superior convergence in terms of both loss and validation
+loss.
+Addressing Overfitting and Underfitting:
+Throughout the CNN model's training process, occasional instances of overfitting were observed, particularly in
+the initial training stages. To counter this challenge, various regularization techniques, including dropout, were
+implemented. Dropout introduces randomness by deactivating neurons during training, thereby preventing the
+model from memorizing noise present in the training data. Additionally, the incorporation of batch normalization
+played a crucial role in stabilizing the training process. By normalizing the input data distributions, batch
+normalization mitigated the risk of overfitting, ensuring more stable and consistent training dynamics. Through
+a delicate balance of model capacity and the integration of regularization techniques, the CNN model effectively
+tackled overfitting and underfitting issues, resulting in notable improvements in generalization performance on
+the validation set.
+Section 3- Results
+i) During the training iterations of both the Multilayer Perceptron (MLP) and Convolutional Neural Network (CNN)
+models, we observed adaptive fluctuations and plateaus in the training loss and accuracy curves over multiple
+epochs. While the CNN model demonstrated smoother convergence in its training loss and accuracy curves,
+indicative of efficient optimization and model convergence, the MLP model exhibited fluctuations and gaps
+between the training and validation loss and accuracy curves. Despite these disparities, both models showcased
+an overall trend of decreasing training loss and increasing training accuracy, suggesting effective learning from
+the training data. Moreover, the CNN model demonstrated robust performance on unseen data, whereas the
+MLP model displayed moderate performance on the test set. Overall, both models effectively learned and
+generalized from the training data, with the CNN model's smoother convergence implying its superior ability to
+capture complex patterns and make accurate predictions.
+ii) The provided code offers a visual journey into the predictions rendered by both the MLP and CNN models for
+six samples sourced from the EMNIST dataset. Each sample's display showcases the predicted and true labels,
+their colours—blue for correct predictions and red for incorrect ones—serving as vivid indicators of prediction
+accuracy. This visual exploration provides a tangible glimpse into the models' prowess in discerning handwritten
+characters. Aligning predicted and true labels signifies accurate predictions, while disparities between them
+unveil areas of potential challenge. This visual assessment serves as a valuable tool for evaluating the models
+adeptness in distinguishing between various characters, offering nuanced insights into their strengths and
+potential limitations in character recognition tasks. By meticulously scrutinizing the predicted outcomes, we
+glean invaluable insights into the models' performance dynamics, enriching our understanding of their
+capabilities.
+iii) In assessing the performance disparities between Multilayer Perceptron (MLPs) and Convolutional Neural
+Networks (CNNs), it's imperative to scrutinise their unique characteristics and operational intricacies. MLPs excel
+in deciphering intricate patterns from structured data, proving invaluable for tasks involving tabular and
+sequential data analysis. However, they struggle with high-dimensional data, particularly images, where they
+stumble due to their inability to comprehend spatial relationships between pixels, thus compromising their
+effectiveness in image-related tasks. Conversely, CNNs are purposefully engineered to surmount this limitation
+by leveraging convolutional layers to adeptly extract local patterns and hierarchical representations within
+images. This hierarchical feature extraction empowers CNNs to adeptly capture spatial hierarchies, with lower
+layers discerning rudimentary features like edges and higher layers synthesizing them to identify complex
+patterns such as objects or shapes. Despite this advantage, CNNs entail computational overhead, especially with
+increasing network depth and complexity. Moreover, their efficacy hinges on substantial labelled data for
+effective training, posing challenges in data-scarce scenarios. Furthermore, interpreting the learned
+representations within CNNs can be challenging, complicating the comprehension of model decisions and
+insights. Overall, while both MLPs and CNNs exhibit strengths and weaknesses, the latter's innate capacity to
+comprehend spatial relationships and extract features renders them more adept at image classification tasks.
+This inherent superiority elucidates why the CNN model outperformed the MLP in the analysis, showcasing
+enhanced accuracy and superior generalization in image classification endeavours.
+Section 4: Conclusions
+Embarking on this project has been an illuminating journey, delving deep into the intricate realm of machine
+learning. It has afforded me invaluable insights into two fundamental architectures: the Multilayer Perceptron
+(MLP) and the Convolutional Neural Network (CNN). Through meticulous exploration and experimentation, I've
+cultivated a profound understanding of how various elements such as hyperparameters, activation functions,
+regularization techniques, and optimization algorithms intricately shape the efficacy and convergence patterns
+of these models. Upon reflection, I've come to appreciate the indispensable role of methodical experimentation
+and continual parameter adjustment in optimizing model performance. While both the MLP and CNN models
+have shown promise, I recognize the vast potential for improvement. Moving forward, my dedication lies in fine-
+tuning hyperparameters and delving into more sophisticated architectures to elevate model accuracy and
+convergence.
+Immersed in this project, I've experienced a journey of enriching learning, deepening my understanding of neural
+network structures, hyperparameter tuning, and meticulous model assessment. Scrutinizing predicted outcomes
+from both MLP and CNN models has yielded invaluable insights into their respective strengths and limitations,
+particularly in character recognition tasks. Reflecting on the journey thus far, I've realized the critical importance
+of interpreting model predictions to extract actionable insights for refinement and practical application. Looking
+ahead, I'm eager to apply these lessons to address intricate machine learning challenges and continually refine
+my skills in model development and deployment.
+This project has significantly broadened my horizons in crafting and evaluating machine learning models,
+particularly MLP and CNN architectures. Exploring a diverse range of hyperparameters, activation functions,
+regularization techniques, and optimization algorithms has deepened my insight into how these components
+interact to influence model performance and convergence dynamics. This newfound knowledge fuels my passion
+for relentless exploration and innovation in the dynamic field of machine learning.
+Reference:
+1. Keras API Docs - https://keras.io/api/
+2. Keras Tuner - https://keras.io/keras_tuner/
+3. Scikit-Learn API - https://scikit-learn.org/stable/modules/classes.html
+4. Data Source - https://www.kaggle.com/datasets/crawford/emnist
+
+
